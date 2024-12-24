@@ -1,29 +1,26 @@
-﻿using System;
+﻿// TODO constructor
+// TODO encapsulation
+// TODO inheritance
+// TODO polymorphism
+// TODO abstraction
+// TODO interface
+// TOOD logging
+// TODO history
+// TODO transfer funds to another account
+// TODO serialization
+// TODO unit tests
+// TODO validation
+// TODO error handling
+// TODO custom exceptiosn (e.g., InsufficientFundsException)
+// TODO Use LINQ and collections for managing transactions or generating reports (e.g., total deposits in a given period).
 
-public class BankAccount {
-    private int Balance { get; set; } // Private balance for encapsulation
 
-    public void ViewBalance() {
-        Console.WriteLine("Current Balance: " + Balance);
-    }
-
-    public void Deposit(int amount) {
-        Balance += amount;
-        Console.WriteLine("Deposited: " + amount);
-    }
-
-    public void Withdraw(int amount) {
-        if (amount > Balance) {
-            Console.WriteLine("Insufficient funds.");
-        } else {
-            Balance -= amount;
-            Console.WriteLine("Withdrawn: " + amount);
-        }
-    }
-}
+using System;
 
 public class Program {
     public static void Main() {
+
+        // Example of initializing with initial balance
         BankAccount account = new BankAccount();
 
         void DisplayActions() {
@@ -87,3 +84,38 @@ public class Program {
         }
     }
 }
+
+
+class BankAccount {
+    private int Balance { get; set; } // Private balance for encapsulation
+
+    public void ViewBalance() {
+        Console.WriteLine("Current Balance: " + Balance);
+    }
+
+    public void Deposit(int amount) {
+        if (amount > 2000) {
+            Console.WriteLine("Cannot deposit more than 2000 at a time.");
+            return;
+        } else if (amount < 0) {
+            Console.WriteLine("Cannot deposit a negative amount.");
+            return;
+        } else {
+            Balance += amount;
+            Console.WriteLine("Deposited: " + amount);
+        }
+    }
+
+    public void Withdraw(int amount) {
+        if (amount > 1000) {
+            Console.WriteLine("Cannot withdraw more than 1000 at a time.");
+        } else if (amount > Balance) {
+            Console.WriteLine($"Insufficient funds - can't take {amount} from {Balance}.");
+        } else {
+            Balance -= amount;
+            Console.WriteLine("Withdrawn: " + amount);
+        }
+    }
+}
+
+ 
